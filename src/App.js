@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { API, graphqlOperation } from "aws-amplify";
 import Amplify from "@aws-amplify/core";
 import * as subscriptions from "./graphql/subscriptions"; //codegen generated code
@@ -38,7 +38,9 @@ function App() {
     });
     return () => subscription.unsubscribe();
   }
-
+  useEffect(() => {
+    setSend("Enter valid JSON here... (use quotes for keys and values)");
+  }, []);
   if (received) {
     data = JSON.parse(received);
   }
@@ -71,9 +73,11 @@ function App() {
             rows="5"
             cols="60"
             name="description"
-            value="Enter valid JSON here... (use quotes for keys and values)"
+            value={send}
             onChange={(e) => setSend(e.target.value)}
-          ></textarea>
+          >
+            Enter valid JSON here... (use quotes for keys and values)
+          </textarea>
           <br />
           <button name="btnSubmit" type="submit" disabled={!channel}>
             Publish
