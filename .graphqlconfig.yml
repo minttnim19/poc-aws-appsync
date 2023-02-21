@@ -11,5 +11,8 @@ projects:
         generatedFileName: ''
         docsFilePath: src/graphql
         region: ap-southeast-1
-        apiId: 3af23qlynffvpln4l2kbp3ftwm
+        apiId: ftbcov5f2bhdjmzkrbcwimxfg4
         maxDepth: 2
+extensions:
+  amplify:
+    version: 3
